@@ -63,7 +63,7 @@
 
 2. 克隆倉庫：
    ```bash
-   git clone git@github.com:YuFireWhisper/dev-setup.git -b ubuntu
+   git clone git@github.com:YuFireWhisper/setup-env.git -b ubuntu
    ```
 
 3. 進入目錄：
