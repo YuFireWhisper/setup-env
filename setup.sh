@@ -46,8 +46,8 @@ echo "配置 SSH 權限..."
 SSH_DIR="$HOME_DIR/.ssh"
 if [ -d "$SSH_DIR" ]; then
     chmod 700 "$SSH_DIR"
-    [ -f "$SSH_DIR/id_rsa" ] && chmod 600 "$SSH_DIR/id_rsa"
-    [ -f "$SSH_DIR/id_rsa.pub" ] && chmod 644 "$SSH_DIR/id_rsa.pub"
+    [ -f "$SSH_DIR/id_ed25519" ] && chmod 600 "$SSH_DIR/id_ed25519"
+    [ -f "$SSH_DIR/id_ed25519.pub" ] && chmod 644 "$SSH_DIR/id_ed25519.pub"
     chown -R $REAL_USER:$REAL_USER "$SSH_DIR"
     
     if [ ! -f "$SSH_DIR/config" ]; then
@@ -56,7 +56,7 @@ if [ -d "$SSH_DIR" ]; then
 Host github.com
     HostName github.com
     User git
-    IdentityFile ~/.ssh/id_rsa
+    IdentityFile ~/.ssh/id_ed25519
     IdentitiesOnly yes
 EOF
         chmod 644 "$SSH_DIR/config"
@@ -67,7 +67,7 @@ fi
 echo "配置 Git..."
 sudo -u $REAL_USER git config --global user.email "yu.whisper.personal@gmail.com"
 sudo -u $REAL_USER git config --global user.name "YuFireWhipser"
-sudo -u $REAL_USER git config --global core.editor "vim"
+sudo -u $REAL_USER git config --global core.editor "nvim"
 
 echo "配置 Neovim..."
 CONFIG_DIR="$HOME_DIR/.config"
