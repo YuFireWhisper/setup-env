@@ -63,22 +63,22 @@
 
 2. 克隆倉庫：
    ```bash
-   git clone git@github.com:YuFireWhisper/dev-setup.git -b ubuntu
+   git clone git@github.com:YuFireWhisper/setup-env.git -b ubuntu
    ```
 
 3. 進入目錄：
    ```bash
-   cd dev-setup
+   cd setup-env
    ```
 
 4. 給腳本執行權限：
    ```bash
-   chmod +x setup-dev-env.sh
+   chmod +x setup.sh
    ```
 
 5. 運行腳本：
    ```bash
-   sudo ./setup-dev-env.sh
+   sudo ./setup.sh
    ```
 
 ## 包含的配置
