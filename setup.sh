@@ -11,11 +11,11 @@ HOME_DIR="/home/$REAL_USER"
 echo "開始配置開發環境..."
 
 echo "更新系統套件..."
-apt-get update
-apt-get upgrade -y
+apt update
+apt upgrade -y
 
 echo "安裝基本工具..."
-apt-get install -y \
+apt install -y \
     git \
     curl \
     wget \
@@ -24,10 +24,19 @@ apt-get install -y \
     python3 \
     python3-pip \
     clangd \
-    neovim \
     unzip \
     tar \
     gzip \
+    net-tools \
+    cmake \
+    libgtest-dev \
+    clang-format \
+    ripgrep \
+    fd-find \
+
+echo "使用 pip 安裝基本工具"
+pip install \
+    clang-format \
 
 echo "創建 Python 符號連結..."
 if [ ! -e /usr/bin/python ]; then
@@ -40,7 +49,16 @@ fi
 
 echo "安裝 NodeJS..."
 curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -
-apt-get install -y nodejs
+apt install -y nodejs
+
+echo "使用 npm 安裝基本工具"
+npm install -g \
+    tree-sitter-cli \
+
+echo "安裝 nvim"
+sudo add-apt-repository ppa:neovim-ppa/unstable
+sudo apt update
+sudo apt install -y neovim
 
 echo "配置 SSH 權限..."
 SSH_DIR="$HOME_DIR/.ssh"
@@ -82,7 +100,7 @@ if [ ! -d "$CONFIG_DIR/nvim" ]; then
 fi
 
 echo "安裝xsel(允許系統剪貼簿)"
-sudo apt install xclip
+sudo apt install -y xclip xsel
 
 echo "驗證安裝..."
 echo "Python 版本:"
@@ -93,5 +111,7 @@ echo "Node.js 版本:"
 node --version
 echo "npm 版本:"
 npm --version
+echo "Nvim版本:"
+nvim --version
 
 echo "環境配置完成！"
